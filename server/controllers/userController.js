@@ -5,12 +5,12 @@ import cloudinary from "../lib/cloudinary.js";
 
 //controller  Sign  up  new  user 
 export const signup  = async (req, res) => {
-    const {fullnName, email, password, bio } =  req.body;
+    const {fullName, email, password, bio } =  req.body;
     try {
-        if(!fullnName || !email || !password || !bio){
+        if(!fullName || !email || !password || !bio){
             return res.json({success:false, message:"Missing Details"})
         }
-        const user = await UserActivation.findOne({email});
+        const user = await User.findOne({email});
 
         if(user){
             return res.json({success:false, message :"Account already exists"})
@@ -19,8 +19,8 @@ export const signup  = async (req, res) => {
         const  salt = await bcrypt .genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = await user.create({
-            fullnName,
+        const newUser = await User.create({
+            fullName,
             email,
             password: hashedPassword,
             bio,
