@@ -3,10 +3,10 @@ import  "dotenv/config";
 import cors from "cors";
 import http from "http";
 import { connectDB } from "./lib/db.js";
-import userRouter from "./routes/user.js";
+import userRouter from "./routes/userRoutes.js";
 import messageRouter from "./routes/messageRoute.js";
 import { Socket, Server } from "socket.io";
-import { use } from "react";
+//import { use } from "react";
 
 //Create  express  app and  HTTP server
 const app =  express();
