@@ -4,7 +4,6 @@ import assets from '../assets/assets'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 
-
 const ProfilePage = () => {
   const {authUser, updateProfile} = useContext(AuthContext);
 
@@ -63,12 +62,11 @@ const ProfilePage = () => {
 
         </form> 
         <img className={`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && 'rounded-full'}`}
-        src={assets.logo_icon}
-        alt=""/>
+             src={authUser?.profilePic ||assets.logo_icon}
+         alt=""/>
 
       </div>
     </div>
   )
 }
-
 export default ProfilePage
