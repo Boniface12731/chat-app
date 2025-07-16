@@ -28,7 +28,7 @@ export const ChatProvider = ({children}) => {
      // function to get  messages for selected  User 
      const getMessages = async (userId) => {
         try {
-            await axios.get(`/api/messages/${userId}`);
+           const {data} = await axios.get(`/api/messages/${userId}`);
             if(data.success){
                 setMessages(data.messages)
             }
@@ -86,11 +86,11 @@ export const ChatProvider = ({children}) => {
         users, 
         selectedUser,
         getUsers, 
-        setMessages,
+        getMessages,
         sendMessage, 
-        setSelectedUser,
-         unseenMessages,
-        setUnseenMessages,
+        setSelectedUser, 
+        unseenMessages,
+        setUnseenMessages
     }
 
     return(
