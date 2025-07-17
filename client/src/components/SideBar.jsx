@@ -21,7 +21,7 @@ const SideBar = () => {
     getUsers();
   },[]);
 
-  console.log(users);
+  //console.log(users);
   
 
   return (
