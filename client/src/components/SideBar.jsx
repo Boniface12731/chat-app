@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import assets, { userDummyData } from '../assets/assets'
+import assets from '../assets/assets'
 import { useNavigate } from 'react-router-dom';
 import {AuthContext} from '../../context/AuthContext'
 import {ChatContext} from '../../context/ChatContext'
@@ -20,6 +20,9 @@ const SideBar = () => {
   useEffect(() => {
     getUsers();
   },[]);
+
+  console.log(users);
+  
 
   return (
    <div className={`bg-[#8185B2]/10 h-full p-5 rounded-r-xl overflow-y-scroll text-white ${selectedUser ? "max-md:hidden" : ''}` }>

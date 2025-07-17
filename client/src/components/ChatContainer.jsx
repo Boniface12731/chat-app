@@ -45,8 +45,8 @@ const ChatContainer = () => {
       scrollEnd.current.scrollIntoView({behavior: "smooth"})
     }
   },[messages])
-
-  console.log(authUser)
+  
+  //console.log(authUser)
 
   return selectedUser ?(
     <div className='h-full overflow-scroll relative backdrop-blur-lg'>
