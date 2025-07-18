@@ -90,8 +90,6 @@ export const AuthProvider = ({children})=> {
         })
     }
 
-
-
     useEffect(() => {
         if(token){
             axios.defaults.headers.common["token"] =  token;
@@ -113,7 +111,7 @@ export const AuthProvider = ({children})=> {
         setSocket,
         setToken,
     }
-
+    
     return (
         <AuthContext.Provider value={value}>
             {children}
