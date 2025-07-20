@@ -22,7 +22,6 @@ export const AuthProvider = ({children})=> {
             if(data.success){
                 setAuthUser(data.user)
                 connectSocket(data.user)
-        
             }
         } catch (error) {
             toast.error(error.message)
@@ -86,6 +85,7 @@ export const AuthProvider = ({children})=> {
         setSocket(newSocket);
 
         newSocket.on("getOnlineUsers", (userIds) => {
+            //console.log("Online Users from socket:", userIds);
             setOnlineUsers(userIds);
         })
     }
