@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react'
 import assets from '../assets/assets'
 import { AuthContext } from '../../context/AuthContext'
+import { Eye, EyeOff } from 'lucide-react'; 
+
 
 const LoginPage = () => {
     const [currState, setCurrState] = useState("Sign up")
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const [bio, setBio] = useState("")
     const [isDataSubmitted, setIsDataSubmitted] = useState(false);
+    const [password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false);
 
     const {login} = useContext(AuthContext)
 
@@ -45,15 +48,30 @@ const LoginPage = () => {
         )}
 
         {!isDataSubmitted && (
-          <>
+      <>
           <input onChange={(e)=>setEmail(e.target.value)} value={email}
           type="email" placeholder='Email Address' required className='p-2 border border-gray-500 rounded-md focus: outline-none focus: ring-2
           focus:ring-indigo-500'/>
 
-        <input onChange={(e)=>setPassword(e.target.value)} value={password}
+        {/* <input onChange={(e)=>setPassword(e.target.value)} value={password}
           type="password" placeholder='Password' required className='p-2 border border-gray-500 rounded-md focus: outline-none focus: ring-2
-          focus:ring-indigo-500'/>
-          </>
+          focus:ring-indigo-500'
+        /> */}
+
+
+         {/* Beginning  of  eye  input  */}
+        <div className="relative w-full">
+        <input onChange={(e) => setPassword(e.target.value)} value={password} type={showPassword ? 'text' : 'password'} placeholder="Password" required
+          className="p-2 pr-10 w-full border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        {/* Eye icon inside the input field */}
+        <div onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-black"
+        >{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </div>
+        </div>
+        {/* end  of  eye  input  */}
+
+        </>
         )}
 
         {
